@@ -121,6 +121,9 @@
             this.Text = "MlkFileHasher";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileHasherForm_FormClosed);
             this.Load += new System.EventHandler(this.FileHasherForm_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FileHasherForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FileHasherForm_DragEnter);
+            this.DragLeave += new System.EventHandler(this.FileHasherForm_DragLeave);
             this.fileInfoPanel.ResumeLayout(false);
             this.fileInfoPanel.PerformLayout();
             this.ResumeLayout(false);

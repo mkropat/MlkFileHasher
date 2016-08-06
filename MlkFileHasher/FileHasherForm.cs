@@ -126,6 +126,31 @@ namespace MlkFileHasher
                 filePath.Text = openFileDialog.FileName;
         }
 
+        void FileHasherForm_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+                _statusUpdater.SetOverrideStatus("Drop file anywhere to hash it");
+            }
+        }
+
+        void FileHasherForm_DragLeave(object sender, EventArgs e)
+        {
+            _statusUpdater.ClearOverrideStatus();
+        }
+
+        void FileHasherForm_DragDrop(object sender, DragEventArgs e)
+        {
+            _statusUpdater.ClearOverrideStatus();
+
+            var filenames = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (filenames.Length > 0)
+            {
+                filePath.Text = filenames[0];
+            }
+        }
+
         async void filePath_TextChanged(object sender, EventArgs e)
         {
             _lastCts?.Cancel();
