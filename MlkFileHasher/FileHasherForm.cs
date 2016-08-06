@@ -18,6 +18,7 @@ namespace MlkFileHasher
     {
         readonly SupportedHashAlgorithm[] _supportedHashes = new[]
         {
+            new SupportedHashAlgorithm { Name = "CRC-32", Factory = Crc32.Factory },
             new SupportedHashAlgorithm { Name = "MD5", Factory = SystemHash.GetFactory(MD5.Create) },
             new SupportedHashAlgorithm { Name = "SHA1", Factory = SystemHash.GetFactory(SHA1.Create) },
             new SupportedHashAlgorithm { Name = "SHA-256", Factory = SystemHash.GetFactory(SHA256.Create) },

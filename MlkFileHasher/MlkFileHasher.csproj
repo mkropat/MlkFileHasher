@@ -58,6 +58,7 @@
     <Compile Include="Formatting\DigitsUIFormat.cs" />
     <Compile Include="Formatting\HexUIFormat.cs" />
     <Compile Include="Formatting\IHashUIFormat.cs" />
+    <Compile Include="Hash\Crc32.cs" />
     <Compile Include="Hash\IHashAlgorithm.cs" />
     <Compile Include="Hash\SupportedHashAlgorithm.cs" />
     <Compile Include="Hash\SystemHash.cs" />
