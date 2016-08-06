@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,8 @@
     <Compile Include="FileHasherForm.Designer.cs">
       <DependentUpon>FileHasherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formatting\Base64UIFormat.cs" />
+    <Compile Include="Formatting\DigitsUIFormat.cs" />
     <Compile Include="Formatting\HexUIFormat.cs" />
     <Compile Include="Formatting\IHashUIFormat.cs" />
     <Compile Include="Hash\IHashAlgorithm.cs" />

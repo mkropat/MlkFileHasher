@@ -27,6 +27,8 @@ namespace MlkFileHasher
         readonly IHashUIFormat[] _supportedFormatters = new IHashUIFormat[]
         {
             new HexUIFormat(),
+            new Base64UIFormat(),
+            //new DigitsUIFormat(),
         };
 
         readonly List<SingleHashRunner> _hashRunners = new List<SingleHashRunner>();
