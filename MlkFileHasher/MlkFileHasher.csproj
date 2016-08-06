@@ -53,8 +53,18 @@
     <Compile Include="FileHasherForm.Designer.cs">
       <DependentUpon>FileHasherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formatting\HexUIFormat.cs" />
+    <Compile Include="Formatting\IHashUIFormat.cs" />
+    <Compile Include="Hash\IHashAlgorithm.cs" />
+    <Compile Include="Hash\SupportedHashAlgorithm.cs" />
+    <Compile Include="Hash\SystemHash.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\SingleHashResultControls.cs" />
+    <Compile Include="UI\SingleHashRunner.cs" />
+    <Compile Include="UI\StatusLineUpdater.cs" />
+    <Compile Include="Util\ActionThrottler.cs" />
+    <Compile Include="Util\FileUtil.cs" />
     <EmbeddedResource Include="FileHasherForm.resx">
       <DependentUpon>FileHasherForm.cs</DependentUpon>
     </EmbeddedResource>

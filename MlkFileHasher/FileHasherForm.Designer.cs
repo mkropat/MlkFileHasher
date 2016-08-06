@@ -47,6 +47,7 @@
             this.filePath.Name = "filePath";
             this.filePath.Size = new System.Drawing.Size(657, 21);
             this.filePath.TabIndex = 0;
+            this.filePath.TextChanged += new System.EventHandler(this.filePath_TextChanged);
             // 
             // browseButton
             // 
@@ -118,6 +119,8 @@
             this.Controls.Add(this.fileInfoPanel);
             this.Name = "FileHasherForm";
             this.Text = "MlkFileHasher";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileHasherForm_FormClosed);
+            this.Load += new System.EventHandler(this.FileHasherForm_Load);
             this.fileInfoPanel.ResumeLayout(false);
             this.fileInfoPanel.PerformLayout();
             this.ResumeLayout(false);
