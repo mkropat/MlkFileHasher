@@ -96,6 +96,8 @@ namespace MlkFileHasher
                         },
                     };
 
+                    controls.Result.Click += CopyTextToClipboard;
+
                     var label = new Label
                     {
                         Dock = DockStyle.Fill,
@@ -208,6 +210,13 @@ namespace MlkFileHasher
         void FileHasherForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _lastCts?.Cancel();
+        }
+
+        static void CopyTextToClipboard(object sender, EventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            Clipboard.SetText(textbox.Text);
+            textbox.SelectAll();
         }
 
         static Dictionary<K2, Dictionary<K1, T>> FlipDictOfDict<K1, K2, T>(Dictionary<K1, Dictionary<K2, T>> dict)
