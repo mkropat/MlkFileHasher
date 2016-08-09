@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MlkFileHasher.Formatting
 {
@@ -12,6 +13,10 @@ namespace MlkFileHasher.Formatting
                 .Replace("-", string.Empty)
                 .ToLowerInvariant();
         }
-    }
 
+        public IEqualityComparer<string> FormattedHashComparer
+        {
+            get { return StringComparer.InvariantCultureIgnoreCase; }
+        }
+    }
 }

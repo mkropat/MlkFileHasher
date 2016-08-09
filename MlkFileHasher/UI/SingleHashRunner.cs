@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -16,6 +17,10 @@ namespace MlkFileHasher.UI
         readonly IEnumerable<SingleHashResultControls> _controls;
         readonly IDictionary<IHashUIFormat, SingleHashResultControls> _formatToControls;
         readonly IProgress<int> _progress;
+
+        IEnumerable<string> _targets = Enumerable.Empty<string>();
+        readonly HashSet<string> _targetMatches = new HashSet<string>();
+        public IEnumerable<string> TargetMatches => _targetMatches.ToArray();
 
         public SingleHashRunner(SupportedHashAlgorithm algorithm, IDictionary<IHashUIFormat, SingleHashResultControls> formatToControls)
         {
@@ -50,6 +55,8 @@ namespace MlkFileHasher.UI
                 d.Text = string.Empty;
 
             SetOutputMode(ResultDisplayMode.ResultText);
+
+            UpdateMatchingHashes();
         }
 
         public async Task StartHashing(FileInfo fi, CancellationToken cancelToken)
@@ -72,9 +79,34 @@ namespace MlkFileHasher.UI
             foreach (var kv in _formatToControls)
                 kv.Value.Result.Text = kv.Key.Format(hashResult);
 
+            UpdateMatchingHashes();
+
             var duration = DateTime.UtcNow - startTime;
             foreach (var d in _controls.Select(cs => cs.Duration))
                 d.Text = FormatDuration(duration);
+        }
+
+        public void SetTargetHashes(IEnumerable<string> targets)
+        {
+            _targets = targets ?? Enumerable.Empty<string>();
+            UpdateMatchingHashes();
+        }
+
+        void UpdateMatchingHashes()
+        {
+            _targetMatches.Clear();
+
+            foreach (var kv in _formatToControls)
+            {
+                var matches = _targets.Where(t => kv.Key.FormattedHashComparer.Equals(kv.Value.Result.Text, t));
+
+                kv.Value.Label.Font = new Font(
+                    kv.Value.Label.Font,
+                    matches.Any() ? FontStyle.Bold : FontStyle.Regular);
+                kv.Value.Result.BackColor = matches.Any() ? Color.LightGreen : SystemColors.Control;
+
+                _targetMatches.UnionWith(matches);
+            }
         }
 
         static byte[] ComputeSingleHash(FileInfo fi, Func<IHashAlgorithm> hashFactory, IProgress<int> progress, CancellationToken cancelToken)

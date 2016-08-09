@@ -65,7 +65,7 @@ namespace MlkFileHasher
                     AutoSize = true,
                     Dock = DockStyle.Top,
                 };
-                resultsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
+                resultsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 65F));
                 resultsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
                 resultsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
                 resultsPanel.RowCount = _supportedHashes.Length;
@@ -83,6 +83,12 @@ namespace MlkFileHasher
                         {
                             TextAlign = ContentAlignment.MiddleLeft,
                         },
+                        Label = new Label
+                        {
+                            Dock = DockStyle.Fill,
+                            Text = hash.Name,
+                            TextAlign = ContentAlignment.MiddleRight,
+                        },
                         Progress = new ProgressBar
                         {
                             Dock = DockStyle.Fill,
@@ -98,14 +104,7 @@ namespace MlkFileHasher
 
                     controls.Result.Click += CopyTextToClipboard;
 
-                    var label = new Label
-                    {
-                        Dock = DockStyle.Fill,
-                        Text = hash.Name,
-                        TextAlign = ContentAlignment.MiddleRight,
-                    };
-                    resultsPanel.Controls.Add(label, 0, i);
-
+                    resultsPanel.Controls.Add(controls.Label, 0, i);
                     resultsPanel.Controls.Add(controls.Progress, 1, i);
                     resultsPanel.Controls.Add(controls.Result, 1, i);
                     resultsPanel.Controls.Add(controls.Duration, 2, i);
@@ -155,6 +154,8 @@ namespace MlkFileHasher
 
         async void filePath_TextChanged(object sender, EventArgs e)
         {
+            var textbox = (TextBox)sender;
+
             _lastCts?.Cancel();
             var myCts = _lastCts = new CancellationTokenSource();
 
@@ -164,7 +165,7 @@ namespace MlkFileHasher
 
                 myCts.Token.ThrowIfCancellationRequested();
 
-                var worker = ComputeHashes(filePath.Text, myCts.Token);
+                var worker = ComputeHashes(textbox.Text, myCts.Token);
 
                 _backgroundWorker = SwallowErrors(worker);
 
@@ -207,6 +208,13 @@ namespace MlkFileHasher
             _statusUpdater.SetStatus($"Hasing completed in {SingleHashRunner.FormatDuration(duration)}");
         }
 
+        void manualVerification_TextChanged(object sender, EventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            foreach (var h in _hashRunners)
+                h.SetTargetHashes(new[] { textbox.Text.Trim() });
+        }
+
         void FileHasherForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _lastCts?.Cancel();
@@ -216,6 +224,12 @@ namespace MlkFileHasher
         {
             var textbox = (TextBox)sender;
             Clipboard.SetText(textbox.Text);
+            textbox.SelectAll();
+        }
+
+        void SelectAll(object sender, EventArgs e)
+        {
+            var textbox = (TextBox)sender;
             textbox.SelectAll();
         }
 
