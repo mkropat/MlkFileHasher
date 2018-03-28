@@ -62,16 +62,23 @@ namespace MlkFileHasher.UI
         public async Task StartHashing(FileInfo fi, CancellationToken cancelToken)
         {
             _progress.Report(0);
-            DateTime startTime = DateTime.MinValue;
+            var startTime = DateTime.MinValue;
 
             var hashResult = await Task.Run(() => {
                 startTime = DateTime.UtcNow;
 
-                return ComputeSingleHash(
+                try
+                {
+                    return ComputeSingleHash(
                     fi,
                     _algorithm.Factory,
                     _progress,
                     cancelToken);
+                }
+                catch (OperationCanceledException)
+                {
+                    return new byte[0];
+                }
             });
 
             SetOutputMode(ResultDisplayMode.ResultText);

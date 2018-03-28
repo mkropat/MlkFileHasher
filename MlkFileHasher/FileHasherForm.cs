@@ -223,6 +223,9 @@ namespace MlkFileHasher
         static void CopyTextToClipboard(object sender, EventArgs e)
         {
             var textbox = (TextBox)sender;
+            if (string.IsNullOrEmpty(textbox.Text))
+                return;
+
             Clipboard.SetText(textbox.Text);
             textbox.SelectAll();
         }
