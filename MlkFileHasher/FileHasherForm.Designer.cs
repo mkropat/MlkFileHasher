@@ -43,20 +43,20 @@
             // filePath
             // 
             this.filePath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filePath.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filePath.Location = new System.Drawing.Point(43, 7);
-            this.filePath.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
+            this.filePath.Location = new System.Drawing.Point(164, 15);
+            this.filePath.Margin = new System.Windows.Forms.Padding(4, 15, 4, 5);
             this.filePath.Name = "filePath";
-            this.filePath.Size = new System.Drawing.Size(657, 21);
+            this.filePath.Size = new System.Drawing.Size(888, 26);
             this.filePath.TabIndex = 0;
             this.filePath.TextChanged += new System.EventHandler(this.filePath_TextChanged);
             // 
             // browseButton
             // 
             this.browseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.browseButton.Location = new System.Drawing.Point(706, 5);
+            this.browseButton.Location = new System.Drawing.Point(1059, 8);
+            this.browseButton.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(75, 23);
+            this.browseButton.Size = new System.Drawing.Size(112, 35);
             this.browseButton.TabIndex = 1;
             this.browseButton.Text = "Browse";
             this.browseButton.UseVisualStyleBackColor = true;
@@ -65,80 +65,79 @@
             // fileInfoPanel
             // 
             this.fileInfoPanel.ColumnCount = 3;
-            this.fileInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.fileInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.fileInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.fileInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.fileInfoPanel.Controls.Add(this.hashResultsTabs, 0, 2);
+            this.fileInfoPanel.Controls.Add(this.hashResultsTabs, 0, 3);
             this.fileInfoPanel.Controls.Add(this.filePath, 1, 0);
             this.fileInfoPanel.Controls.Add(this.browseButton, 2, 0);
             this.fileInfoPanel.Controls.Add(this.filePathLabel, 0, 0);
-            this.fileInfoPanel.Controls.Add(this.fileInfoLabel, 1, 1);
-            this.fileInfoPanel.Controls.Add(this.manualVerificationLabel, 0, 3);
-            this.fileInfoPanel.Controls.Add(this.manualVerification, 0, 4);
+            this.fileInfoPanel.Controls.Add(this.manualVerificationLabel, 0, 1);
+            this.fileInfoPanel.Controls.Add(this.manualVerification, 1, 1);
+            this.fileInfoPanel.Controls.Add(this.fileInfoLabel, 0, 4);
             this.fileInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fileInfoPanel.Location = new System.Drawing.Point(0, 0);
+            this.fileInfoPanel.Margin = new System.Windows.Forms.Padding(4, 10, 4, 15);
             this.fileInfoPanel.Name = "fileInfoPanel";
             this.fileInfoPanel.RowCount = 5;
             this.fileInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.fileInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.fileInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.fileInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.fileInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.fileInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.fileInfoPanel.Size = new System.Drawing.Size(784, 282);
+            this.fileInfoPanel.Size = new System.Drawing.Size(1176, 434);
             this.fileInfoPanel.TabIndex = 2;
             // 
             // hashResultsTabs
             // 
             this.fileInfoPanel.SetColumnSpan(this.hashResultsTabs, 3);
             this.hashResultsTabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hashResultsTabs.Location = new System.Drawing.Point(3, 57);
+            this.hashResultsTabs.Location = new System.Drawing.Point(4, 113);
+            this.hashResultsTabs.Margin = new System.Windows.Forms.Padding(4, 25, 4, 0);
             this.hashResultsTabs.Name = "hashResultsTabs";
             this.hashResultsTabs.SelectedIndex = 0;
-            this.hashResultsTabs.Size = new System.Drawing.Size(778, 172);
+            this.hashResultsTabs.Size = new System.Drawing.Size(1168, 281);
             this.hashResultsTabs.TabIndex = 4;
             // 
             // filePathLabel
             // 
-            this.filePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePathLabel.Location = new System.Drawing.Point(3, 2);
+            this.filePathLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filePathLabel.Location = new System.Drawing.Point(3, 0);
             this.filePathLabel.Name = "filePathLabel";
-            this.filePathLabel.Size = new System.Drawing.Size(34, 29);
+            this.filePathLabel.Size = new System.Drawing.Size(154, 46);
             this.filePathLabel.TabIndex = 2;
-            this.filePathLabel.Text = "File:";
+            this.filePathLabel.Text = "File to hash:";
             this.filePathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // fileInfoLabel
             // 
             this.fileInfoLabel.AutoSize = true;
+            this.fileInfoPanel.SetColumnSpan(this.fileInfoLabel, 3);
             this.fileInfoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileInfoLabel.Location = new System.Drawing.Point(43, 31);
-            this.fileInfoLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.fileInfoLabel.Location = new System.Drawing.Point(15, 404);
+            this.fileInfoLabel.Margin = new System.Windows.Forms.Padding(15, 10, 3, 10);
             this.fileInfoLabel.Name = "fileInfoLabel";
-            this.fileInfoLabel.Size = new System.Drawing.Size(657, 13);
+            this.fileInfoLabel.Size = new System.Drawing.Size(1158, 20);
             this.fileInfoLabel.TabIndex = 4;
             this.fileInfoLabel.Text = "Info output";
             // 
             // manualVerificationLabel
             // 
-            this.manualVerificationLabel.AutoSize = true;
-            this.fileInfoPanel.SetColumnSpan(this.manualVerificationLabel, 2);
             this.manualVerificationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.manualVerificationLabel.Location = new System.Drawing.Point(15, 242);
-            this.manualVerificationLabel.Margin = new System.Windows.Forms.Padding(15, 10, 3, 0);
+            this.manualVerificationLabel.Location = new System.Drawing.Point(3, 46);
             this.manualVerificationLabel.Name = "manualVerificationLabel";
-            this.manualVerificationLabel.Size = new System.Drawing.Size(685, 13);
+            this.manualVerificationLabel.Size = new System.Drawing.Size(154, 42);
             this.manualVerificationLabel.TabIndex = 5;
-            this.manualVerificationLabel.Text = "Paste a hash to compare it:";
-            this.manualVerificationLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.manualVerificationLabel.Text = "Expected hash:";
+            this.manualVerificationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // manualVerification
             // 
-            this.fileInfoPanel.SetColumnSpan(this.manualVerification, 2);
             this.manualVerification.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.manualVerification.Location = new System.Drawing.Point(15, 258);
-            this.manualVerification.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
+            this.manualVerification.Location = new System.Drawing.Point(164, 57);
+            this.manualVerification.Margin = new System.Windows.Forms.Padding(4, 11, 4, 5);
             this.manualVerification.Name = "manualVerification";
-            this.manualVerification.Size = new System.Drawing.Size(685, 20);
+            this.manualVerification.Size = new System.Drawing.Size(888, 26);
             this.manualVerification.TabIndex = 6;
             this.manualVerification.Click += new System.EventHandler(this.SelectAll);
             this.manualVerification.TextChanged += new System.EventHandler(this.manualVerification_TextChanged);
@@ -146,10 +145,11 @@
             // FileHasherForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 282);
+            this.ClientSize = new System.Drawing.Size(1176, 434);
             this.Controls.Add(this.fileInfoPanel);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FileHasherForm";
             this.Text = "MlkFileHasher";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileHasherForm_FormClosed);
